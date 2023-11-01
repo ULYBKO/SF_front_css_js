@@ -1,0 +1,47 @@
+body {
+    display: table;
+    margin-top: 10px;
+    border: 5px solid whitesmoke;
+    border-radius: 15px;
+    padding: 10px;
+    white-space:nowrap;
+}
+
+table {
+border-collapse: collapse;
+width: 100%;
+margin-top: 10px;
+}
+
+td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+tr:hover{
+    background-color: whitesmoke;
+
+}
+.highlight {
+    background-color: wheat;
+}
+img {
+    display: block;
+    margin: 0 auto;
+  }
+
+
+li {
+    color: blue;   
+}  
+
+a {
+    color: #0075B2; /* Цвет обычной ссылки */ 
+    text-decoration: none; /* Убираем подчёркивание у ссылок */
+   }
+
+a:hover {
+    color: #CE242B; /* Цвет ссылки при наведении */ 
+    text-decoration:underline; /* Добавляем подчёркивание */
+}
+
