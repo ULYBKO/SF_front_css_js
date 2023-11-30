@@ -1,106 +1,114 @@
-var ch = 0;
-var nch = 0;
-
-var massiv = prompt('Введите массив чисел через запятую (например, 1,2,3):');
-var masArray = massive.split(',');
-
-var mas = masArray.map(function (item) {
-    return parseFloat(item);
-});
-
-function abMas() {
-    for (var i = 0; i < mas.length; i++) {
-        if (typeof(mas[i])=='number') {
-            if (mas[i] % 2 == 0) {
-                ch=ch+1;
-    
-            } else {
-                nch =nch + 1;
-            }
-        } else {
-        console.log(mas[i]);
-        }
+//1-ое задание классы
+class NumberAnalyzer {
+    constructor(massive) {
+        this.massive = massive;
+        this.ch = 0;
+        this.nch = 0;
+        this.mas = this.parseArray();
     }
-    console.log(ch);
-    console.log(nch);
+
+    parseArray() {
+        const masArray = this.massive.split(',');
+        return masArray.map(item => parseFloat(item));
+    }
+
+    analyzeNumbers() {
+        for (let i = 0; i < this.mas.length; i++) {
+            if (typeof(this.mas[i]) === 'number') {
+                if (this.mas[i] % 2 === 0) {
+                    this.ch++;
+                } else {
+                    this.nch++;
+                }
+            } else {
+                console.log(this.mas[i]);
+            }
+        }
+        console.log("Четные: " + this.ch);
+        console.log("Нечетные: " + this.nch);
+    }
 }
 
-abMas();
 
 
-
-
-
-//второе задание
-var inbCh = prompt('Введите число от 0 до 1000:');
-
-var number = parseInt(inbCh);
-
-function isPrimeNumber(number) {
-    if (number <= 1 || number > 1000) {
-        console.log("Данные неверны. Введите число от 2 до 1000.");
-        return;
+//2-ое задание классы
+class PrimeNumberChecker {
+    constructor() {
+        this.number = this.getInputNumber();
     }
 
-    for (var i = 2; i <= Math.sqrt(number); i++) {
-        if (number % i === 0) {
-            console.log(number + " - не является простым числом.");
+    getInputNumber() {
+        const input = prompt('Введите число от 0 до 1000:');
+        return parseInt(input);
+    }
+
+    isPrimeNumber() {
+        if (this.number <= 1 || this.number > 1000 || isNaN(this.number)) {
+            console.log("Данные неверны. Введите число от 2 до 1000.");
             return;
         }
+
+        for (let i = 2; i <= Math.sqrt(this.number); i++) {
+            if (this.number % i === 0) {
+                console.log(this.number + " - не является простым числом.");
+                return;
+            }
+        }
+
+        console.log(this.number + " - простое число.");
+    }
+}
+
+//3-е задание классы
+class AdderCreator {
+    constructor(x) {
+        this.x = x;
     }
 
-    console.log(number + " - простое число.");
+    createAdder() {
+        return function(y) {
+            return this.x + y;
+        }.bind(this);
+    }
 }
 
 
-isPrimeNumber();
+
+//4-ое задание классы
+class NumberPrinter {
+    constructor(a, b) {
+        this.a = parseFloat(a);
+        this.b = parseFloat(b);
+        this.intervalId = null;
+    }
+
+    startPrinting() {
+        this.intervalId = setInterval(() => {
+            console.log(this.a, this.b);
+        }, 1000);
+
+        setTimeout(() => {
+            this.stopPrinting();
+        }, 5000);
+    }
+
+    stopPrinting() {
+        clearInterval(this.intervalId);
+        console.log("Интервал остановлен.");
+    }
 
 
 
 
-//третье задание
-function createAdder(x) {
-    return function(y) {
-        return x + y;
-    };
+
+// 5-ое задание классы
+class PowerCalculator {
+    constructor(x, n) {
+        this.x = parseInt(x);
+        this.n = parseInt(n);
+    }
+
+    calculatePower() {
+        return Math.pow(this.x, this.n);
+    }
 }
-
-// Пример использования:
-var addFive = createAdder(5);
-var result = addFive(3);
-
-console.log(result);
-
-
-
-//четвертое задание
-var a = prompt("Введите a:");
-var b = prompt("Введите b:");
-
-// Преобразуем введенные значения в числа
-a = parseFloat(a);
-b = parseFloat(b);
-
-const intervalId = setInterval(function () {
-    console.log(a, b);
-}, 1000);
-
-// Остановка интервала через 5 секунд
-setTimeout(function () {
-    clearInterval(intervalId);
-}, 5000);
-
-
-//пятое задание
-var x = prompt("Vvedite x");
-var n = prompt("Vvedite n");
-x = parseInt(x);
-n = parseInt(n);
-
-const power = (x, n) => {
-    return Math.pow(x, n);
-};
-
-// Пример использования:
-const result = power(x, n);
-console.log(result);
