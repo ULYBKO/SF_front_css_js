@@ -104,9 +104,3 @@ const power = (x, n) => {
 // Пример использования:
 const result = power(x, n);
 console.log(result);
-
-
-
-
-
-
